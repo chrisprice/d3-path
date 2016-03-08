@@ -11,6 +11,16 @@ tape("path is an instanceof path", function(test) {
   test.end();
 });
 
+tape("path.beginPath() clears state", function(test) {
+  var p = path.path(); p.moveTo(150, 50);
+  test.pathEqual(p, "M150,50");
+  p.beginpath();
+  test.pathEqual(p, "");
+  p.moveTo(100, 50);
+  test.pathEqual(p, "M100,50");
+  test.end();
+});
+
 tape("path.moveTo(x, y) appends an M command", function(test) {
   var p = path.path(); p.moveTo(150, 50);
   test.pathEqual(p, "M150,50");

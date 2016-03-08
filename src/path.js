@@ -15,6 +15,10 @@ function path() {
 
 Path.prototype = path.prototype = {
   constructor: Path,
+  beginPath: function() {
+    this._x0 = this._y0 = this._x1 = this._y1 = null;
+    this._.length = 0;
+  },
   moveTo: function(x, y) {
     this._.push("M", this._x0 = this._x1 = +x, ",", this._y0 = this._y1 = +y);
   },
